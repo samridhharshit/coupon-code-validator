@@ -6,7 +6,7 @@ import axios from 'axios'
 function App() {
 
   useEffect(() => {
-    axios.get('/api')
+    axios.get('/api/items/')
         .then(data => {
           console.log(data)
         })

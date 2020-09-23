@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/api', (req, res) => {
-    res.send('calling api')
-})
+router.use('/api', require('./api'))
 
 module.exports = router
