@@ -7,8 +7,8 @@ export  default function CouponList() {
             <div className="checkout-container container col-6 align-content-center registration">
                 <h4>Choose a promo code</h4><hr/>
                 <div>
-                    <p><a>Product 1</a> <span className="price">asdsdsa</span></p><hr/>
-                    <p><a>Product 2</a> <span className="price">sadjkhds</span></p>
+                    <p><Link to={'/'}>Product 1</Link> <span className="price">asdsdsa</span></p><hr/>
+                    <p><Link to={'/'}>Product 2</Link> <span className="price">sadjkhds</span></p>
                 </div>
             </div>
         </div>
