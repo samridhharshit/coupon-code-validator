@@ -1,38 +1,154 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#root {
+  height: 100%;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
+}
+.vertical {
+  border-left: 6px solid #bc5f5f;
+  height: 100%;
+  position:absolute;
+  left: 50%;
+}
+
+.login{
+  padding: 2%;
+  margin-top: 10%;
+}
+.registration{
+  margin-top: 7.5%;
+  position: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+.list_story_header{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  position: -webkit-sticky; /* Safari & IE */
+  position: sticky;
+  top: 0;
+  background: white;
+}
+.story_container{
+  padding: 1%
+}
+.card-body{
+  text-overflow:ellipsis;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-button {
+  border: none;
+  color: #2196F3;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+}
+.modal-button:hover {
+  color: blue;
+}
+.view_icon{
+  display: inline-block;
+}
+.view_text{
+  display: inline-block;
+}
+.reading_icon {
+  display: inline-block;
+  margin-left: 1%;
+}
+.reading_text{
+  display: inline-block
+}
+.text{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+
+}
+.homelink{
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+.homelink:hover{
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.logo{
+  display: inline-block;
+}
+
+.log-out{
+  display: inline-block;
+  float: right;
+}
+
+/* Checkout css */
+.coupons-section {
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  /*justify-content: space-around;*/
+}
+.checkout-container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+.coupon-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-group {
+  display: flex;
+  justify-content: space-between;
+}
+.input-group > input {
+  width: 100%;
+}
+.select {
+  width: 100%;
 }
