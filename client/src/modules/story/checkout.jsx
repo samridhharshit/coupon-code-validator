@@ -78,7 +78,10 @@ function Checkout(props) {
             {
                 checklistItems.map(item =>
                 <div key={item._id}>
-                    <p><a>{item.name} &#215; {item.count}</a> <span className="price">&#8377;{item.price * item.count}</span></p>
+                    <p>
+                        <a>{item.name} &#215; {item.count}</a>
+                        <span className="price">&#8377;{item.price * item.count}</span>
+                    </p>
                 </div>
                 )
             }

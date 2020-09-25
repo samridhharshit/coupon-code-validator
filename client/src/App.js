@@ -9,7 +9,6 @@ function App() {
       <Router>
           <Switch>
               <Route exact path="/" component={Container} />
-              {/*<Route eaxt path="/storiesList" component={StoriesCollection} />*/}
               <Redirect to={'/'} />
           </Switch>
       </Router>

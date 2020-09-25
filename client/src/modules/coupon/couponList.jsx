@@ -38,8 +38,6 @@ export  default function CouponList() {
                             </div>
                         )
                     }
-
-                    {/*<p><Link to={'/'}>Product 2</Link> <span className="price">sadjkhds</span></p>*/}
                 </div>
             </div>
         </div>
