@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from "react-router-dom";
+// import {Link, Redirect} from "react-router-dom";
 import axios from 'axios'
 import { connect } from 'react-redux'
 import Button from "reactstrap/es/Button";
@@ -7,38 +7,49 @@ import Button from "reactstrap/es/Button";
 function StoriesCollection(props) {
     const [stories, setStories] = useState(null)
     const [loading, setLoading] = useState(true)
-    // const [loginCount, setLoginCount] = useState(0)
+
+    // this code snippet has been used from stackoverflow to get count of each story id
+    function getCountOfEachId(arr) {
+        let counts = {};
+        arr.forEach(function(x) {
+            counts[x] = (counts[x] || 0)+1;
+        });
+        return counts
+    }
 
     useEffect(() => {
         async function getStories() {
-            console.log(props.user, typeof (props.user))
             const response = await axios.get('/api/items')
-            console.log(response.data)
-            setStories([...response.data])
-            setLoading(false)
-            // setLoginCount(1)
 
+            const idCounts = await getCountOfEachId(props.items)
+
+            response.data.forEach(story => {
+              story.count = idCounts[`${story._id}`]
+            })
+
+            setStories([...response.data])
+            props.setStories([...response.data])
+            setLoading(false)
         }
         setLoading(true)
         getStories()
-        // console.log(props.user)
-    }, [props.user])
+    }, [props.items])
+
+    const addItemToCart = (itemId) => {
+        // console.log(itemId)
+        props.addItemToCheckout(itemId)
+    }
 
     if (loading) {
-        // console.log(Object.keys(props.user).length)
-        // if (Object.keys(props.user).length === 0 && loginCount > 0) {
-        //     return <Redirect push={true} to={'/'} />
-        // }
         return (
             <div className="list_story_header fixed-top">
                 <h1 className={'homelink'}>Loading your Stories...</h1>
             </div>
         )
     }
-
     return (
-        <div className="container col-lg-9 col-sm-12">
 
+        <div className="container col-lg-9 col-sm-12">
             <div className="list_story_header fixed-top">
                 <h1 className="logo">Add Stories to your cart from here...</h1>
             </div>
@@ -56,7 +67,7 @@ function StoriesCollection(props) {
                                         </div>
                                         <div className="card-footer">
                                             <div className={'card-link'}>Price: &#8377;{story.price}</div>
-                                            <Button outline={true}>Add to cart</Button>
+                                            <Button onClick={() => addItemToCart(story._id)} outline={true}>Add to cart</Button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,13 +90,14 @@ function StoriesCollection(props) {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        items: state.items
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        logout: () => {dispatch({ type: 'REMOVE_USER' })}
+        addItemToCheckout: (itemId) => {dispatch({ type: 'ADD_ITEM', itemId })},
+        setStories: (stories) => {dispatch({type: 'SET_STORIES', stories})}
     }
 }
 

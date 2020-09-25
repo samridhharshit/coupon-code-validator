@@ -6,7 +6,8 @@ const couponsSchema = schema({
     endDate: Date,
     thresholdAmount: Number,
     type: String,
-    value: String
+    value: Number,
+    code: String
 })
 
 const coupon = mongoose.model("coupon", couponsSchema)

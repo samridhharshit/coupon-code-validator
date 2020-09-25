@@ -6,7 +6,8 @@ const addCoupon = async (body) => {
         endDate: body.end_date,
         thresholdAmount: body.minAmount,
         type: body.type,
-        value: body.couponValue
+        value: body.couponValue,
+        code: body.code_string
     })
 
     return newCoupon.save()

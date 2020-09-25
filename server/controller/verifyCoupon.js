@@ -1,7 +1,7 @@
 const coupon = require('../database/models/coupons')
 
 const verifyCoupon = async (body) => {
-    const Coupon = await coupon.findOne({ value: body.coupon })
+    const Coupon = await coupon.findOne({ code: body.coupon })
     if (Coupon) {
         if (new Date().getTime() > Coupon.startDate.getTime() && new Date().getTime() < Coupon.endDate.getTime()) {
             if (body.total >= Coupon.thresholdAmount) {
