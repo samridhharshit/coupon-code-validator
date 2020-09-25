@@ -54,9 +54,6 @@ function Checkout(props) {
             code_string: code_string.value
         }
         axios.post('/api/coupon/addCoupon', object)
-            .then(res => {
-                console.log(res)
-            })
 
     }
 
@@ -64,9 +61,10 @@ function Checkout(props) {
         setNetTotal(0)
         setDiscount(0)
         setTotal(0)
+
         e.preventDefault()
-        console.log(e.target.value)
         setCode(e.target.value)
+
         const response = await axios.post('/api/coupon/verifyCoupon', {coupon: e.target.value, total})
         if (response.data.inRange === true) {
             setNetTotal(response.data.finalAmount)

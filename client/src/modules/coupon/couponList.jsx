@@ -13,7 +13,6 @@ export  default function CouponList() {
             if (response.data) {
                 await setCoupons([...response.data])
             }
-            // console.log(response)
         }
         getAllCoupons()
     }, [])
